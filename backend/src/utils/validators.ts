@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express"
 import { body, ValidationChain, validationResult } from "express-validator"
 
 
-const validate = (validations: ValidationChain[]) =>{
+export const validate = (validations: ValidationChain[]) =>{
     return async (req: Request, res: Response, next: NextFunction)=>{
         for(let validation of validations){
             const result = await validation.run(req);
@@ -18,7 +18,7 @@ const validate = (validations: ValidationChain[]) =>{
         return res.status(422).json({errors: errors.array()})
     }
 }
-const signupValidator =[
+export const signupValidator =[
     body('name').notEmpty().withMessage('Name is required'),
     body('email').notEmpty().isEmail().withMessage("Email is required"),
     body('password').trim().isLength({min:6}).withMessage('Password should contain minimum 6 characters')
