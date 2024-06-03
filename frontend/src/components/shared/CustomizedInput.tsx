@@ -1,8 +1,11 @@
 import React from 'react'
 
+type Props ={
+
+}
 const CustomizedInput = () => {
   return (
-    <div>CustomizedInput</div>
+    <div></div>
   )
 }
 
