@@ -19,16 +19,17 @@ const Header = () => {
         <NavigationLink 
           bg='#51538f'
           to='/'
-          text='Logout'
+          text='logout'
           textColor='white' 
           onClick={auth.logout}
         />
       </> )
       : 
       (<>
-        <NavigationLink bg='#5905e2'
+        <NavigationLink 
+        bg='#5905e2'
         to='/login'
-        text='Login'
+        text='Log In'
         textColor='white'          
         />
         <NavigationLink 

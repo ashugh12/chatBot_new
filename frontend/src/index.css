@@ -7,7 +7,9 @@ html, body{
   color: white;
   font-family: "Poppins", sans-serif;
 }
-
+form{
+  background: #5a05e2;
+}
 .image-inverted{
   filter: invert(100%);
 }
@@ -21,4 +23,10 @@ html, body{
   border-radius: 7px;
   text-decoration: none;
   letter-spacing: 1px;
+}
+
+
+.MuiOutlinedInput-input-root.Mui-focused,
+.MuiOutlinedInput-notchedOutline {
+  border-color: white !important;
 }
