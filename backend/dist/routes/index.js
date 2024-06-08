@@ -7,7 +7,6 @@ const express_1 = require("express");
 const user_routes_js_1 = __importDefault(require("./user-routes.js"));
 const chat_routes_js_1 = __importDefault(require("./chat-routes.js"));
 const appRouter = (0, express_1.Router)();
-console.log("We are in the index.ts file");
 appRouter.use("/user", user_routes_js_1.default); //domain/api/v1/user --->  userRoutes called
 appRouter.use("/chat", chat_routes_js_1.default); // domain/api/v1/chats --> chatRoutes called
 exports.default = appRouter;

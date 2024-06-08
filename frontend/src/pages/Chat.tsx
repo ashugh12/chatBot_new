@@ -9,20 +9,6 @@ import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom"
 
 
-const discussion = [
-  { role: 'user', content: 'Hello, how can I help you?' },
-  { role: 'assistant', content: "Hi there! I'm here to assist you." },
-  { role: 'user', content: "I'm having trouble with my computer. It keeps crashing." },
-  { role: 'assistant', content: 'I see. Have you tried restarting your computer?' },
-  { role: 'user', content: "Yes, I've tried restarting it multiple times, but the issue persists." },
-  { role: 'assistant', content: 'In that case, it might be a hardware issue. Have you checked your hardware components?' },
-  { role: 'user', content: "No, I haven't. How can I do that?" },
-  { role: 'assistant', content: 'You can try running diagnostic tests or checking for any loose connections.' },
-  { role: 'user', content: "Okay, I'll give that a try. Thank you!" },
-  { role: 'assistant', content: "You're welcome! Let me know if you need further assistance." }
-  // Add more messages as the discussion continues
-];
-
 
 
 type Message = {

@@ -30,7 +30,7 @@ const generateChatCompletion = async (req, res, next) => {
             model: "gemini-1.5-flash"
         });
         // Assuming the correct structure expected by Google Generative AI API
-        const chatResponse = await model.generateContent("Google");
+        const chatResponse = await model.generateContent(message);
         const result = chatResponse.response.text(); // Adjust based on actual response structure
         console.log(result);
         user.chats.push({ content: result, role: "assistant" });

@@ -40,7 +40,7 @@ const Login = () => {
     console.log("We are in useEffect() of Login()");
 
     if(auth?.user){
-      return Navigate("/")
+      return Navigate("/chat")
     }
   }, [auth])
   return (
