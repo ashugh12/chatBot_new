@@ -8,7 +8,7 @@ function extractCodeFromString(message:string){
     if(message.includes("```")){
         const blocks = message.split("```");
         return blocks;
-    }
+    }1``
 }
 
 function isCodeBlock(str: string){
@@ -31,7 +31,7 @@ const ChatItem = ({content, role}: {content: string, role: "user"|"assistant"}) 
     const messageBlocks = extractCodeFromString(content);
 
     const auth = useAuth();
-  return (role ==="assistant" ?<Box sx={{display:"flex", p: 2, bgcolor: "#004d5612", my:2, gap: 2}}>
+  return (role == "assistant" ? (<Box sx={{display:"flex", p: 2, bgcolor: "#004d5612", my:2, gap: 2}}>
     <Avatar sx={{ml:"0"}}>
         <img src="openai.png" alt="openai"
         width={"30px"}/>
@@ -40,7 +40,7 @@ const ChatItem = ({content, role}: {content: string, role: "user"|"assistant"}) 
         {!messageBlocks && (<Typography sx={{fontSize: "20px"}}>{content}</Typography>)}
         {messageBlocks && messageBlocks.length && messageBlocks.map((block)=> (isCodeBlock(block) ? (<SyntaxHighlighter style={coldarkCold} language='javascript'>{block}</SyntaxHighlighter>):(<Typography sx={{fontSize:"20px"}}>{block}</Typography>)))}
     </Box>
-  </Box> :
+  </Box> ):(
   <Box sx={{display:"flex", p: 2, bgcolor: "#5905e2     ", gap: 2, my:2}}>
     <Avatar sx={{ml:"0", bgcolor:"black", font:"white" }}>
         {auth?.user?.name[0]}
@@ -48,7 +48,7 @@ const ChatItem = ({content, role}: {content: string, role: "user"|"assistant"}) 
     </Avatar>
     <Box>
         <Typography fontSize={"20px"}>{content}</Typography>
-    </Box></Box>
+    </Box></Box>)
   ) 
 }
 

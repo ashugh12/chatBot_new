@@ -6,16 +6,26 @@ import {IoIosLogIn} from 'react-icons/io'
 import  {toast} from "react-hot-toast"
 import { useAuth } from "../context/AuthContext"
 import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 const Login = () => {
+  console.log("We are in Login()");
+
+  const Navigate = useNavigate();
+
   const auth = useAuth();
   const handleSubmit =async(e: React.FormEvent<HTMLFormElement>)=> {
+    console.log("We are in handleSubmit of Login");
+
   e.preventDefault();
 
   const formData = new FormData(e.currentTarget);
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
+  console.log(email, password);
+
+  console.log(auth?.isLoggedIn);  
   try{
     toast.loading("Signing In!", {id:"login"})
     await auth?.login(email, password);
@@ -27,8 +37,10 @@ const Login = () => {
   }
 };
   useEffect(()=>{
+    console.log("We are in useEffect() of Login()");
+
     if(auth?.user){
-      
+      return Navigate("/")
     }
   }, [auth])
   return (

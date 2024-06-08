@@ -3,6 +3,7 @@ import User from "../models/User.js"
 import { compare, hash } from "bcrypt"
 import { createToken } from "../utils/token-manager.js";
 import { COOKIE_NAME } from "../utils/constants.js";
+
 export const getAllUsers = async (
     req: Request,
     res: Response,
@@ -23,9 +24,7 @@ export const userSignup = async (
     res: Response,
     next: NextFunction
 ) => {
-
     // user sign up
-
     try {
         const { name, email, password } = req.body;
         const existingUser = await User.findOne({ email });
@@ -60,13 +59,14 @@ export const userLogin = async (
     res: Response,
     next: NextFunction
 ) => {
+    console.log("We are in userLogin of User-controllers");
 
     // user login  
 
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email })
-        console.log(user);
+        console.log(user.email);
         if (!user) {
             return res.status(401).send("User is not registered")
         }
@@ -100,15 +100,15 @@ export const userLogout = async (
     next: NextFunction
 ) => {
 
-    // user verification  
+    console.log("We are in userLogout of user-controllers");
 
     try {
-        const user = await User.findById(res.locals.jwtData.email )
-        console.log(user);
+        const user = await User.findById(res.locals.jwtData.id)
+        // console.log(user);
         if (!user) {
             return res.status(401).send("User is not registered or Token malfunctioned.")
         }
-        console.log(user._id.toString(), res.locals.jwtData.id)
+        // console.log(user._id.toString(), res.locals.jwtData.id)
         if(user._id.toString() !== res.locals.jwtData.id){
             return res.status(401).send("Permission did'nt match")
         }
@@ -130,11 +130,12 @@ export const verifyUser = async (
     res: Response,
     next: NextFunction
 ) => {
+    console.log("We are in VerifyUser of user-controllers");
 
     // user verification  
 
     try {
-        const user = await User.findById(res.locals.jwtData.email )
+        const user = await User.findById(res.locals.jwtData.id)
         console.log(user);
         if (!user) {
             return res.status(401).send("User is not registered or Token malfunctioned.")

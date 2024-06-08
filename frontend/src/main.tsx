@@ -9,7 +9,7 @@ import axios from 'axios'
 import { Toaster } from "react-hot-toast"
 
 
-axios.defaults.baseURL= "http://localhost:5000/api/v1";
+axios.defaults.baseURL= "http://localhost:5600/api/v1";
 axios.defaults.withCredentials = true;
 
 const theme = createTheme({
